@@ -1,0 +1,37 @@
+# Core
+fastapi
+uvicorn[standard]
+python-multipart
+python-jose[cryptography]
+passlib[bcrypt]
+pydantic
+pydantic-settings
+pydantic[email]
+
+# Database
+sqlalchemy
+alembic
+
+# AI / ML
+torch
+torchvision
+pillow
+numpy
+opencv-python-headless
+scikit-learn
+transformers
+huggingface_hub
+
+# PDF Generation
+reportlab
+
+# Rate Limiting
+slowapi
+
+# Email (optional)
+aiosmtplib
+
+# Dev / Testing
+pytest
+pytest-asyncio
+httpx

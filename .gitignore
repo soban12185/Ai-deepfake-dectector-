@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+.env
+*.db
+*.sqlite3
+
+# Logs / uploads / reports
+backend/logs/
+backend/uploads/
+backend/reports/
+backend/models/*.pth
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# Docker
+.dockerignore
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
