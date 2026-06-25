@@ -9,7 +9,6 @@ import uuid
 import logging
 from typing import List, Tuple, Optional
 
-import cv2
 import numpy as np
 from PIL import Image, ImageFilter
 from sqlalchemy.orm import Session
@@ -40,6 +39,11 @@ def _detect_edit_types(pil_image: Image.Image, prediction: str, confidence: floa
 
     # Only run deep analysis when the model says FAKE
     if prediction != "FAKE":
+        return tags
+
+    try:
+        import cv2
+    except ImportError:
         return tags
 
     img_rgb = np.array(pil_image.convert("RGB"))
@@ -272,6 +276,12 @@ def _build_video_edit_types(
 def _process_video_frames(
     video_path: str,
 ) -> Tuple[List[FrameResult], str, float]:
+    try:
+        import cv2
+    except ImportError:
+        logger.warning("OpenCV not available, cannot process video.")
+        return [], "REAL", 0.5
+
     cap = cv2.VideoCapture(video_path)
     fps = cap.get(cv2.CAP_PROP_FPS) or 25.0
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
